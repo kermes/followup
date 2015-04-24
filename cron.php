@@ -32,7 +32,7 @@ if (Tools::getIsset('secure_key'))
 	$secure_key = Configuration::get('PS_FOLLOWUP_SECURE_KEY');
 	if (!empty($secure_key) && $secure_key === Tools::getValue('secure_key'))
 	{
-		$followup = new Module::getInstanceByName('followup');
+		$followup = Module::getInstanceByName('followup');
 		if ($followup->active)
 			$followup->cronTask();
 	}
