@@ -25,14 +25,14 @@
 */
 
 include(dirname(__FILE__).'/../../config/config.inc.php');
-include(dirname(__FILE__).'/followup.php');
+include(dirname(__FILE__).'/../../init.php');
 
 if (Tools::getIsset('secure_key'))
 {
 	$secure_key = Configuration::get('PS_FOLLOWUP_SECURE_KEY');
 	if (!empty($secure_key) && $secure_key === Tools::getValue('secure_key'))
 	{
-		$followup = new Followup();
+		$followup = new Module::getInstanceByName('followup');
 		if ($followup->active)
 			$followup->cronTask();
 	}
